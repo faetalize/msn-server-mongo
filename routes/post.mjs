@@ -55,7 +55,7 @@ async function createPost(req, res) {
       isFrontPage: req.body.isFrontPage || false,
       isEvent: req.body.isEvent || false,
       //if event, add event date
-      ...(req.body.isEvent && { eventDate: req.body.eventDate }),
+      ...(req.body.isEvent && { eventDate: new Date(req.body.eventDate) }),
       tags: req.body.tags || [],
       content: req.body.content,
       author: req.body.author || "No author",
