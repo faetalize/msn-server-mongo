@@ -6,9 +6,11 @@ import { userRouter } from "./routes/user.mjs";
 import { menuRouter } from "./routes/menu.mjs";
 import path from "path";
 import { logsRouter } from "./routes/logs.mjs";
+import dotenv from "dotenv";
+dotenv.config();
 
-//connect to mongodb
-const uri = "mongodb://localhost:27017";
+//connect to mongodb using .env file
+const uri = "mongodb://"+ process.env.DB_USERNAME + ":" + process.env.PASSWORD + "@" + "localhost:27017/?authMechanism=DEFAULT&authSource=admin";
 export const client = new MongoClient(uri);
 
 //routes
